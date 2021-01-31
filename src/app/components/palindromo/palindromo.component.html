@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-danger justify-content-center">
+    <a class="navbar-brand" href="#">
+        Palíndromos
+    </a>
+    <div class="form-inline">
+        <input class="form-control mr-sm-2" placeholder="Ingresa palabra/frase" [(ngModel)]="text">
+        <button class="btn btn-success my-2 my-sm-0" (click)="create()">Enviar</button>
+    </div>
+</nav>
+
+<div class="container mt-5">
+
+    <h4>Resultados</h4>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Cadena</th>
+                <th>Invertido</th>
+                <th>Fecha creación</th>
+                <th>Palíndromo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of palindromos">
+                <td>{{ item.id }}</td>
+                <td>{{ item.cadena }}</td>
+                <td>{{ item.invertido }}</td>
+                <td>{{ item.creadoEn | date:'d/M/yy, h:mm a' }}</td>
+                <td>
+                    <!-- {{ item.palindromo | booleanPipe }} -->
+                    <span *ngIf="item.palindromo" class="badge rounded-pill bg-success text-light">SI</span>
+                    <span *ngIf="!item.palindromo" class="badge rounded-pill bg-danger text-light">NO</span>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+</div>
